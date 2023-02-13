@@ -1,0 +1,32 @@
+{
+  "name": "tutorials-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeyanaNikolova/tutorials-express.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeyanaNikolova/tutorials-express.js/issues"
+  },
+  "homepage": "https://github.com/DeyanaNikolova/tutorials-express.js#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.1",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
