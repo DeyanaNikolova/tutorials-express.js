@@ -1,9 +1,7 @@
-const { body } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const { parseError } = require('../util/parser');
 const { register, login } = require('../services/userService');
-
 const authController = require('express').Router();
-
 
 authController.get('/register', (req, res) => {
 
@@ -20,12 +18,16 @@ authController.post('/register',
         .isLength({ min: 5 }).withMessage('Password must be at least 5 characrets long!')
         .isAlphanumeric().withMessage('Password may contain only letters and digits!'),
     async (req, res) => {
+
         try {
-          
+            const { errors } = validationResult(req);
+            if (errors.length > 0) {
+                throw errors;
+            }
+
             if (req.body.password !== req.body.repass) {
                 throw new Error('Password missmatch!');
             }
-
 
             const token = await register(req.body.username, req.body.password);
             res.cookie('token', token);
