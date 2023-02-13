@@ -1,6 +1,7 @@
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../util/parser');
 const { register, login } = require('../services/userService');
+
 const authController = require('express').Router();
 
 authController.get('/register', (req, res) => {
