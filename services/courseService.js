@@ -6,15 +6,20 @@ async function getAllByDate() {
 
 async function getRecent() {
     return Course.find({}).sort({ userCount: -1}).limit(3).lean();
+
 }
 
 async function createCourse(course) {
    return Course.create(course);
 }
 
+async function getById(id) {
+    return Course.findById(id).lean();
+}
+
 module.exports = {
     getAllByDate,
     getRecent,
     createCourse,
-
+    getById
 }

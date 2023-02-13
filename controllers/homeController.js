@@ -1,4 +1,4 @@
-const { getAllByDate } = require('../services/courseService');
+const { getAllByDate, getRecent } = require('../services/courseService');
 
 const homeController = require('express').Router();
 
@@ -16,7 +16,7 @@ homeController.get('/', async (req, res) => {
         // guest home page
 
         view = 'guest-home';
-        courses = await getAllByDate();
+        courses = await getRecent();
     }
     res.render(view, {
         title: 'Home Page',

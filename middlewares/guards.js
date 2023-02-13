@@ -18,7 +18,7 @@ function isGuest() {
     }
 }
 
-module.exsports = {
+module.exports = {
     hasUser,
     isGuest
 };
