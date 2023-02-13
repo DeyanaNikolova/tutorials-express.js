@@ -1,12 +1,19 @@
 const homeController = require('express').Router();
 
-// TODO: replase with real controller by assignemt
 
 homeController.get('/', (req, res) => {
-    res.render('home', {
-        title: 'Home Page',
-        user: req.user
-    });
+    let view;
+
+    if (req.user) {
+        // user home page
+        
+        view = 'user-home';
+    } else {
+        // guest home page
+        
+        view = 'guest-home';
+    }
+    res.render(view, { title: 'Home Page' });
 });
 
 module.exports = homeController;
