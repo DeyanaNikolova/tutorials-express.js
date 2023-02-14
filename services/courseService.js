@@ -20,27 +20,28 @@ async function createCourse(course) {
 async function getById(id) {
     return Course.findById(id).lean();
 }
+async function getByIdRow(id) {
+    return Course.findById(id);
+}
 
 async function deleteById(id) {
     return Course.findByIdAndDelete(id);
 }
 
-async function updateById(id, data) {
-    const existing = await Course.findById(id);
+async function updateById(course, data) {
+ 
+    course.title = data.title;
+    course.description = data.description;
+    course.imageUrl = data.imageUrl;
+    course.duration = data.duration;
 
-    existing.title = data.title;
-    existing.description = data.description;
-    existing.imageUrl = data.imageUrl;
-    existing.duration = data.duration;
-
-    return existing.save();
+    return course.save();
 }
 
-async function enrollUser(courseId, userId) {
-    const existing = await Course.findById(courseId);
-    existing.users.push(userId);
-    existing.userCount++;
-    return existing.save();
+async function enrollUser(course, userId) {
+    course.users.push(userId);
+    course.userCount++;
+    return course.save();
 }
 
 module.exports = {
@@ -49,6 +50,7 @@ module.exports = {
     createCourse,
     getById,
     deleteById,
+    getByIdRow,
     updateById,
-    enrollUser
+    enrollUser 
 }
